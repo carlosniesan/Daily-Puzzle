@@ -145,6 +145,8 @@ body {
   padding: 20px;
   position: relative;
   transition: background 0.3s ease, color 0.3s ease;
+  touch-action: pan-y;
+  overscroll-behavior: none;
 }
 
 body.light-mode {
@@ -821,31 +823,35 @@ body.light-mode .info-version {
 
 @media (max-width: 768px) {
   body {
-    padding: 10px;
+    padding: 8px;
+    overflow: hidden;
+    height: 100vh;
   }
   
   :root {
-    --cell: 36px;
-    --gap: 3px;
+    --cell: 32px;
+    --gap: 2px;
   }
   
   .game-container {
-    gap: 16px;
+    gap: 12px;
+    height: calc(100vh - 16px);
+    overflow-y: auto;
   }
   
   .piece-tray {
     grid-template-columns: repeat(3, 1fr);
-    padding: 10px;
-    gap: 6px;
+    padding: 8px;
+    gap: 5px;
     min-height: auto;
   }
   
   .piece-container {
-    min-height: 110px;
-    min-width: 110px;
-    max-height: 110px;
-    max-width: 110px;
-    padding: 6px;
+    min-height: 85px;
+    min-width: 85px;
+    max-height: 85px;
+    max-width: 85px;
+    padding: 5px;
   }
   
   .date-header {
@@ -926,50 +932,54 @@ body.light-mode .info-version {
 
 @media (max-width: 480px) {
   :root {
-    --cell: 32px;
+    --cell: 28px;
     --gap: 2px;
   }
   
   body {
-    padding: 6px;
+    padding: 5px;
+    overflow: hidden;
+    height: 100vh;
   }
   
   .game-container {
-    gap: 10px;
+    gap: 8px;
+    height: calc(100vh - 10px);
+    overflow-y: auto;
   }
   
   .grid {
-    padding: 4px;
+    padding: 3px;
   }
   
   .cell-label {
-    font-size: 11px;
+    font-size: 10px;
   }
   
   .piece-tray {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 8px;
-    gap: 5px;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 6px;
+    gap: 4px;
     min-height: auto;
   }
   
   .piece-container {
-    min-height: 90px;
-    min-width: 90px;
-    max-height: 90px;
-    max-width: 90px;
+    min-height: 70px;
+    min-width: 70px;
+    max-height: 70px;
+    max-width: 70px;
     padding: 4px;
   }
   
   .rotate-btn {
-    width: 24px;
-    height: 24px;
-    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
   }
   
   .piece-buttons {
-    gap: 4px;
-    margin-top: 4px;
+    gap: 3px;
+    margin-top: 3px;
   }
   
   .date-header {
@@ -1055,35 +1065,35 @@ body.light-mode .info-version {
 
 @media (max-width: 380px) {
   :root {
-    --cell: 28px;
+    --cell: 26px;
   }
   
   .cell-label {
-    font-size: 10px;
+    font-size: 9px;
   }
   
   .piece-tray {
-    padding: 6px;
-    gap: 4px;
+    padding: 5px;
+    gap: 3px;
   }
   
   .piece-container {
-    min-height: 78px;
-    min-width: 78px;
-    max-height: 78px;
-    max-width: 78px;
-    padding: 4px;
+    min-height: 65px;
+    min-width: 65px;
+    max-height: 65px;
+    max-width: 65px;
+    padding: 3px;
   }
   
   .rotate-btn {
-    width: 22px;
-    height: 22px;
-    font-size: 11px;
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
   }
   
   .piece-buttons {
-    gap: 3px;
-    margin-top: 3px;
+    gap: 2px;
+    margin-top: 2px;
   }
   
   .date-header {

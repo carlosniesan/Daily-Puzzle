@@ -965,16 +965,29 @@ function setupDragAndDrop() {
         const cellSize = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--cell')) || 48;
         const gap = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--gap')) || 4;
         
-        const containerRect = container.getBoundingClientRect();
-        const localX = touch.clientX - containerRect.left;
-        const localY = touch.clientY - containerRect.top;
+        // Find clicked cell within the piece
+        let clickedCell = null;
+        const cells = container.querySelectorAll('.piece-cell.filled');
+        for (const cell of cells) {
+            const cellRect = cell.getBoundingClientRect();
+            if (touch.clientX >= cellRect.left && touch.clientX <= cellRect.right &&
+                touch.clientY >= cellRect.top && touch.clientY <= cellRect.bottom) {
+                clickedCell = cell;
+                break;
+            }
+        }
         
-        // Find which cell in the piece was clicked
-        const gridX = Math.floor(localX / (cellSize + gap));
-        const gridY = Math.floor(localY / (cellSize + gap));
+        // Default to first cell if no cell was clicked directly
+        if (!clickedCell) {
+            clickedCell = cells[0];
+        }
         
-        const clickOffset = findCellAtPixel(pieces[index], gridX, gridY);
-        if (!clickOffset) return;
+        if (!clickedCell) return;
+        
+        const cellRow = parseInt(clickedCell.dataset.row);
+        const cellCol = parseInt(clickedCell.dataset.col);
+        
+        const clickOffset = { row: cellRow, col: cellCol };
         
         const clickPixelOffset = {
             x: touch.clientX - rect.left,
