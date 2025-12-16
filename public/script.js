@@ -552,10 +552,10 @@ const pieces = [
     { name: 'E5', cells: [[0,0],[1,0],[2,0],[2,1],[2,2]], color: '#2e7d32' },
     // S4: S de 4 casillas
     { name: 'S4', cells: [[0,0],[1,0],[1,1],[2,1]], color: '#a1887f' },
-    // C5: C de 5 casillas
-    { name: 'C5', cells: [[0,0],[1,0],[2,0],[0,1],[2,1]], color: '#81c784' },
     // Z5: Primera Z de 5 casillas
     { name: 'Z5', cells: [[0,0],[0,1],[0,2],[1,2],[1,3]], color: '#ef5350' },
+    // C5: C de 5 casillas
+    { name: 'C5', cells: [[0,0],[1,0],[2,0],[0,1],[2,1]], color: '#81c784' },
     // P5: 3 casillas en fila superior y 2 en fila inferior (con hueco)
     { name: 'P5', cells: [[0,0],[0,1],[0,2],[1,1],[1,2]], color: '#ffee58' }
 ];
