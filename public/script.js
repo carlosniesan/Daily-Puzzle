@@ -1091,10 +1091,6 @@ function setupDragAndDrop() {
     document.addEventListener('touchmove', documentTouchMoveHandler, { passive: false });
     
     documentTouchEndHandler = (e) => {
-        // Limpiar datos temporales
-        const containers = document.querySelectorAll('.piece-container');
-        containers.forEach(c => delete c._tempTouchData);
-        
         // Si no hubo movimiento, es un tap para rotar
         if (!touchMoved && !draggedPiece) {
             const touch = e.changedTouches[0];
@@ -1106,6 +1102,14 @@ function setupDragAndDrop() {
                     rotatePiece(index);
                 }
             }
+            
+            // Limpiar datos temporales
+            const containers = document.querySelectorAll('.piece-container');
+            containers.forEach(c => delete c._tempTouchData);
+            
+            // Resetear variables
+            touchMoved = false;
+            draggedPiece = null;
             return;
         }
         
@@ -1177,6 +1181,13 @@ function setupDragAndDrop() {
         draggedPiece = null;
         removeFloatingPiece();
         clearPreview();
+        
+        // Limpiar datos temporales
+        const containers = document.querySelectorAll('.piece-container');
+        containers.forEach(c => delete c._tempTouchData);
+        
+        // Resetear variables
+        touchMoved = false;
         
         e.preventDefault();
     };
