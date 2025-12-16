@@ -960,10 +960,18 @@ function setupDragAndDrop() {
         
         const touch = e.touches[0];
         const rect = container.getBoundingClientRect();
-        const trayRect = trayElement.getBoundingClientRect();
         
-        const gridX = Math.floor((touch.clientX - trayRect.left) / (CELL_SIZE + GAP));
-        const gridY = Math.floor((touch.clientY - trayRect.top) / (CELL_SIZE + GAP));
+        // Get current cell size and gap from CSS variables
+        const cellSize = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--cell')) || 48;
+        const gap = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--gap')) || 4;
+        
+        const containerRect = container.getBoundingClientRect();
+        const localX = touch.clientX - containerRect.left;
+        const localY = touch.clientY - containerRect.top;
+        
+        // Find which cell in the piece was clicked
+        const gridX = Math.floor(localX / (cellSize + gap));
+        const gridY = Math.floor(localY / (cellSize + gap));
         
         const clickOffset = findCellAtPixel(pieces[index], gridX, gridY);
         if (!clickOffset) return;

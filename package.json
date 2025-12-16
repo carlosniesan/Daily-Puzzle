@@ -1,6 +1,6 @@
 {
   "name": "daily-puzzle",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A daily calendar puzzle game.",
   "main": "public/script.js",
   "scripts": {
@@ -10,6 +10,6 @@
   "devDependencies": {
     "live-server": "^1.2.1"
   },
-  "author": "Carlos Niesan",
+  "author": "Carlos Nieto Sanchez",
   "license": "ISC"
 }
