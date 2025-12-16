@@ -1005,21 +1005,30 @@ function setupDragAndDrop() {
     trayElement.addEventListener('touchstart', trayTouchStartHandler, { passive: false });
     
     const documentTouchMoveHandler = (e) => {
-        // Detectar si hay movimiento significativo
+        const touch = e.touches[0];
+        
+        // Detectar si hay movimiento significativo (más de 5px)
         if (!touchMoved) {
-            touchMoved = true;
-            // Iniciar drag desde el contenedor si hay datos temporales
             const containers = document.querySelectorAll('.piece-container');
             for (const container of containers) {
                 if (container._tempTouchData) {
                     const data = container._tempTouchData;
-                    draggedPiece = {
-                        index: data.index,
-                        piece: data.piece,
-                        clickOffset: data.clickOffset,
-                        clickPixelOffset: data.clickPixelOffset,
-                        isDragging: false
-                    };
+                    const rect = container.getBoundingClientRect();
+                    const deltaX = Math.abs(touch.clientX - (rect.left + data.clickPixelOffset.x));
+                    const deltaY = Math.abs(touch.clientY - (rect.top + data.clickPixelOffset.y));
+                    
+                    // Solo considerar movimiento si se mueve más de 5px
+                    if (deltaX > 5 || deltaY > 5) {
+                        touchMoved = true;
+                        // Iniciar drag
+                        draggedPiece = {
+                            index: data.index,
+                            piece: data.piece,
+                            clickOffset: data.clickOffset,
+                            clickPixelOffset: data.clickPixelOffset,
+                            isDragging: false
+                        };
+                    }
                     break;
                 }
             }
@@ -1042,15 +1051,25 @@ function setupDragAndDrop() {
             floatingPieceEl.style.top = (touch.clientY - draggedPiece.clickPixelOffset.y) + 'px';
         }
         
-        const element = document.elementFromPoint(touch.clientX, touch.clientY);
-        const cell = element?.closest('.grid-cell');
+        // Calcular la posición en el grid basándose en la celda [0,0] de la pieza
+        const cellSize = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--cell'));
+        const gridGap = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--gap'));
+        const gridEl = document.getElementById('grid');
+        const gridRect = gridEl.getBoundingClientRect();
         
-        if (cell) {
-            const row = parseInt(cell.dataset.row);
-            const col = parseInt(cell.dataset.col);
-            const adjustedRow = row - draggedPiece.clickOffset.row;
-            const adjustedCol = col - draggedPiece.clickOffset.col;
-            showPreview(draggedPiece.piece, adjustedRow, adjustedCol);
+        // Calcular posición de la celda [0,0] de la pieza
+        const piece00X = touch.clientX - draggedPiece.clickPixelOffset.x;
+        const piece00Y = touch.clientY - draggedPiece.clickPixelOffset.y;
+        
+        // Convertir a coordenadas de grid
+        const relativeX = piece00X - gridRect.left;
+        const relativeY = piece00Y - gridRect.top;
+        
+        const col = Math.floor(relativeX / (cellSize + gridGap));
+        const row = Math.floor(relativeY / (cellSize + gridGap));
+        
+        if (row >= 0 && row < GRID_ROWS && col >= 0 && col < GRID_COLS) {
+            showPreview(draggedPiece.piece, row, col);
         } else {
             clearPreview();
         }
@@ -1090,17 +1109,25 @@ function setupDragAndDrop() {
         document.body.classList.remove('is-dragging');
         
         const touch = e.changedTouches[0];
-        const element = document.elementFromPoint(touch.clientX, touch.clientY);
-        const cell = element?.closest('.grid-cell');
         
-        if (cell) {
-            const row = parseInt(cell.dataset.row);
-            const col = parseInt(cell.dataset.col);
-            const adjustedRow = row - draggedPiece.clickOffset.row;
-            const adjustedCol = col - draggedPiece.clickOffset.col;
-            
-            if (canPlacePiece(draggedPiece.piece, adjustedRow, adjustedCol)) {
-                const pieceCells = placePiece(draggedPiece.piece, adjustedRow, adjustedCol);
+        // Calcular la posición en el grid usando el mismo método que en touchmove
+        const cellSize = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--cell'));
+        const gridGap = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--gap'));
+        const gridEl = document.getElementById('grid');
+        const gridRect = gridEl.getBoundingClientRect();
+        
+        const piece00X = touch.clientX - draggedPiece.clickPixelOffset.x;
+        const piece00Y = touch.clientY - draggedPiece.clickPixelOffset.y;
+        
+        const relativeX = piece00X - gridRect.left;
+        const relativeY = piece00Y - gridRect.top;
+        
+        const col = Math.floor(relativeX / (cellSize + gridGap));
+        const row = Math.floor(relativeY / (cellSize + gridGap));
+        
+        if (row >= 0 && row < GRID_ROWS && col >= 0 && col < GRID_COLS) {
+            if (canPlacePiece(draggedPiece.piece, row, col)) {
+                const pieceCells = placePiece(draggedPiece.piece, row, col);
                 
                 placedPieces.push({
                     pieceIndex: draggedPiece.index,
