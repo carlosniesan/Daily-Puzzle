@@ -532,6 +532,9 @@ let trayClickHandler = null;
 let trayMouseDownHandler = null;
 let documentMouseMoveHandler = null;
 let documentMouseUpHandler = null;
+let trayTouchStartHandler = null;
+let documentTouchMoveHandler = null;
+let documentTouchEndHandler = null;
 
 // Tetris pieces with their shape definitions
 const pieces = [
@@ -738,6 +741,15 @@ function setupDragAndDrop() {
     }
     if (documentMouseUpHandler) {
         document.removeEventListener('mouseup', documentMouseUpHandler);
+    }
+    if (trayTouchStartHandler) {
+        trayElement.removeEventListener('touchstart', trayTouchStartHandler);
+    }
+    if (documentTouchMoveHandler) {
+        document.removeEventListener('touchmove', documentTouchMoveHandler);
+    }
+    if (documentTouchEndHandler) {
+        document.removeEventListener('touchend', documentTouchEndHandler);
     }
     
     let mouseDownTime = 0;
@@ -953,7 +965,7 @@ function setupDragAndDrop() {
     let touchTimer = null;
     let touchMoved = false;
     
-    const trayTouchStartHandler = (e) => {
+    trayTouchStartHandler = (e) => {
         const container = e.target.closest('.piece-container');
         if (!container) return;
         
@@ -1004,7 +1016,7 @@ function setupDragAndDrop() {
     };
     trayElement.addEventListener('touchstart', trayTouchStartHandler, { passive: false });
     
-    const documentTouchMoveHandler = (e) => {
+    documentTouchMoveHandler = (e) => {
         let touch = e.touches[0];
         
         // Detectar si hay movimiento significativo (más de 5px)
@@ -1078,7 +1090,7 @@ function setupDragAndDrop() {
     };
     document.addEventListener('touchmove', documentTouchMoveHandler, { passive: false });
     
-    const documentTouchEndHandler = (e) => {
+    documentTouchEndHandler = (e) => {
         // Limpiar datos temporales
         const containers = document.querySelectorAll('.piece-container');
         containers.forEach(c => delete c._tempTouchData);
