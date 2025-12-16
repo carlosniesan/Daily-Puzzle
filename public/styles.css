@@ -823,35 +823,52 @@ body.light-mode .info-version {
 
 @media (max-width: 768px) {
   body {
-    padding: 8px;
+    padding: 5px;
     overflow: hidden;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
   
   :root {
-    --cell: 32px;
+    --cell: 28px;
     --gap: 2px;
   }
   
   .game-container {
-    gap: 12px;
-    height: calc(100vh - 16px);
-    overflow-y: auto;
+    gap: 8px;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+  }
+  
+  .date-header {
+    font-size: 16px;
+    padding: 8px 16px;
+    margin-bottom: 0;
+  }
+  
+  .grid {
+    padding: 3px;
   }
   
   .piece-tray {
     grid-template-columns: repeat(3, 1fr);
-    padding: 8px;
-    gap: 5px;
+    padding: 6px;
+    gap: 4px;
     min-height: auto;
+    flex-shrink: 0;
   }
   
   .piece-container {
-    min-height: 85px;
-    min-width: 85px;
-    max-height: 85px;
-    max-width: 85px;
-    padding: 5px;
+    min-height: 75px;
+    min-width: 75px;
+    max-height: 75px;
+    max-width: 75px;
+    padding: 4px;
   }
   
   .date-header {
@@ -932,54 +949,55 @@ body.light-mode .info-version {
 
 @media (max-width: 480px) {
   :root {
-    --cell: 28px;
+    --cell: 25px;
     --gap: 2px;
   }
   
   body {
-    padding: 5px;
-    overflow: hidden;
-    height: 100vh;
+    padding: 4px;
   }
   
   .game-container {
-    gap: 8px;
-    height: calc(100vh - 10px);
-    overflow-y: auto;
+    gap: 6px;
   }
   
   .grid {
-    padding: 3px;
+    padding: 2px;
   }
   
   .cell-label {
-    font-size: 10px;
+    font-size: 9px;
+  }
+  
+  .date-header {
+    font-size: 14px;
+    padding: 6px 12px;
   }
   
   .piece-tray {
     grid-template-columns: repeat(3, 1fr);
-    padding: 6px;
-    gap: 4px;
+    padding: 5px;
+    gap: 3px;
     min-height: auto;
   }
   
   .piece-container {
-    min-height: 70px;
-    min-width: 70px;
-    max-height: 70px;
-    max-width: 70px;
-    padding: 4px;
+    min-height: 65px;
+    min-width: 65px;
+    max-height: 65px;
+    max-width: 65px;
+    padding: 3px;
   }
   
   .rotate-btn {
-    width: 20px;
-    height: 20px;
-    font-size: 11px;
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
   }
   
   .piece-buttons {
-    gap: 3px;
-    margin-top: 3px;
+    gap: 2px;
+    margin-top: 2px;
   }
   
   .date-header {
@@ -1065,30 +1083,35 @@ body.light-mode .info-version {
 
 @media (max-width: 380px) {
   :root {
-    --cell: 26px;
+    --cell: 23px;
   }
   
   .cell-label {
-    font-size: 9px;
+    font-size: 8px;
+  }
+  
+  .date-header {
+    font-size: 12px;
+    padding: 5px 10px;
   }
   
   .piece-tray {
-    padding: 5px;
-    gap: 3px;
+    padding: 4px;
+    gap: 2px;
   }
   
   .piece-container {
-    min-height: 65px;
-    min-width: 65px;
-    max-height: 65px;
-    max-width: 65px;
+    min-height: 58px;
+    min-width: 58px;
+    max-height: 58px;
+    max-width: 58px;
     padding: 3px;
   }
   
   .rotate-btn {
-    width: 18px;
-    height: 18px;
-    font-size: 10px;
+    width: 16px;
+    height: 16px;
+    font-size: 9px;
   }
   
   .piece-buttons {
@@ -1097,6 +1120,7 @@ body.light-mode .info-version {
   }
   
   .date-header {
-    font-size: 13px;
+    font-size: 12px;
+    padding: 5px 10px;
   }
 }

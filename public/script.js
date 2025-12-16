@@ -646,6 +646,30 @@ function createPieceTray() {
         const pieceGrid = createPiecePreview(piece);
         pieceContainer.appendChild(pieceGrid);
         
+        // Add rotation buttons
+        const buttonsDiv = document.createElement('div');
+        buttonsDiv.className = 'piece-buttons';
+        
+        const rotateLeftBtn = document.createElement('button');
+        rotateLeftBtn.className = 'rotate-btn';
+        rotateLeftBtn.textContent = '↺';
+        rotateLeftBtn.onclick = (e) => {
+            e.stopPropagation();
+            rotatePiece(i);
+        };
+        
+        const rotateRightBtn = document.createElement('button');
+        rotateRightBtn.className = 'rotate-btn';
+        rotateRightBtn.textContent = '↻';
+        rotateRightBtn.onclick = (e) => {
+            e.stopPropagation();
+            rotatePiece(i);
+        };
+        
+        buttonsDiv.appendChild(rotateLeftBtn);
+        buttonsDiv.appendChild(rotateRightBtn);
+        pieceContainer.appendChild(buttonsDiv);
+        
         trayElement.appendChild(pieceContainer);
     }
 }
@@ -961,33 +985,8 @@ function setupDragAndDrop() {
         const touch = e.touches[0];
         const rect = container.getBoundingClientRect();
         
-        // Get current cell size and gap from CSS variables
-        const cellSize = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--cell')) || 48;
-        const gap = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--gap')) || 4;
-        
-        // Find clicked cell within the piece
-        let clickedCell = null;
-        const cells = container.querySelectorAll('.piece-cell.filled');
-        for (const cell of cells) {
-            const cellRect = cell.getBoundingClientRect();
-            if (touch.clientX >= cellRect.left && touch.clientX <= cellRect.right &&
-                touch.clientY >= cellRect.top && touch.clientY <= cellRect.bottom) {
-                clickedCell = cell;
-                break;
-            }
-        }
-        
-        // Default to first cell if no cell was clicked directly
-        if (!clickedCell) {
-            clickedCell = cells[0];
-        }
-        
-        if (!clickedCell) return;
-        
-        const cellRow = parseInt(clickedCell.dataset.row);
-        const cellCol = parseInt(clickedCell.dataset.col);
-        
-        const clickOffset = { row: cellRow, col: cellCol };
+        // Simple approach: use the first cell of the piece as offset
+        const clickOffset = { row: 0, col: 0 };
         
         const clickPixelOffset = {
             x: touch.clientX - rect.left,
