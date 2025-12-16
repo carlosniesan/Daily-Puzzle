@@ -1005,7 +1005,7 @@ function setupDragAndDrop() {
     trayElement.addEventListener('touchstart', trayTouchStartHandler, { passive: false });
     
     const documentTouchMoveHandler = (e) => {
-        const touch = e.touches[0];
+        let touch = e.touches[0];
         
         // Detectar si hay movimiento significativo (más de 5px)
         if (!touchMoved) {
@@ -1036,7 +1036,7 @@ function setupDragAndDrop() {
         
         if (!draggedPiece) return;
         
-        const touch = e.touches[0];
+        touch = e.touches[0];
         
         if (!draggedPiece.isDragging) {
             draggedPiece.isDragging = true;
