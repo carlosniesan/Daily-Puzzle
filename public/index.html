@@ -25,6 +25,42 @@
         <button id="btn-theme" class="control-btn">
             <span class="icon">🌙</span>
         </button>
+        <button id="btn-info" class="control-btn">
+            <span class="icon">ℹ️</span>
+        </button>
+    </div>
+    <div class="info-modal" id="info-modal">
+        <div class="info-content">
+            <button class="info-close" id="info-close">✕</button>
+            <h2 class="info-title" data-i18n="info.title">Cómo jugar</h2>
+            <div class="info-instructions">
+                <div class="info-section">
+                    <h3 data-i18n="info.objective">🎯 Objetivo</h3>
+                    <p data-i18n="info.objectiveText">Completa el calendario del día de hoy cubriendo todas las fechas excepto la fecha actual.</p>
+                </div>
+                <div class="info-section">
+                    <h3 data-i18n="info.howToPlay">🎮 Cómo jugar</h3>
+                    <ul>
+                        <li data-i18n="info.step1">Arrastra las piezas desde la bandeja inferior al calendario</li>
+                        <li data-i18n="info.step2">Usa los botones de rotación para girar las piezas</li>
+                        <li data-i18n="info.step3">Haz clic en una pieza colocada para quitarla del tablero</li>
+                        <li data-i18n="info.step4">Cubre todas las fechas excepto la fecha de hoy (marcada en rojo)</li>
+                    </ul>
+                </div>
+                <div class="info-section">
+                    <h3 data-i18n="info.controls">⚙️ Controles</h3>
+                    <ul>
+                        <li><strong>🌐</strong> <span data-i18n="info.controlLang">Cambiar idioma</span></li>
+                        <li><strong>🔊</strong> <span data-i18n="info.controlSound">Activar/Desactivar sonido</span></li>
+                        <li><strong>🌙</strong> <span data-i18n="info.controlTheme">Cambiar modo claro/oscuro</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="info-footer">
+                <p data-i18n="info.author">Desarrollado por <strong>Carlos Niesan</strong></p>
+                <p class="info-version">v1.0.1</p>
+            </div>
+        </div>
     </div>
     <div class="game-container">
         <div class="date-header" id="current-date"></div>

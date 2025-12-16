@@ -22,6 +22,7 @@ const translations = {
             language: 'Cambiar idioma',
             sound: 'Activar/Desactivar sonido',
             theme: 'Cambiar modo claro/oscuro',
+            info: 'Información y ayuda',
             languages: {
                 es: 'Español',
                 en: 'English',
@@ -30,6 +31,21 @@ const translations = {
                 pt: 'Português',
                 it: 'Italiano'
             }
+        },
+        info: {
+            title: 'Cómo jugar',
+            objective: '🎯 Objetivo',
+            objectiveText: 'Completa el tablero del día de hoy cubriendo todas las casillas excepto las que forman la fecha actual.',
+            howToPlay: '🎮 Cómo jugar',
+            step1: 'Haz clic en una pieza para rotarla',
+            step2: 'Arrastra las piezas desde la bandeja inferior al tablero',
+            step3: 'Haz clic en una pieza colocada para quitarla del tablero',
+            step4: 'Cubre todas las fechas excepto la fecha de hoy (marcada en rojo)',
+            controls: '⚙️ Controles',
+            controlLang: 'Cambiar idioma',
+            controlSound: 'Activar/Desactivar sonido',
+            controlTheme: 'Cambiar modo claro/oscuro',
+            author: 'Desarrollado por <strong>Carlos Nieto Sanchez</strong>'
         },
         victory: {
             title: '¡Felicidades! 🎉',
@@ -47,6 +63,7 @@ const translations = {
             language: 'Change language',
             sound: 'Toggle sound',
             theme: 'Toggle light/dark mode',
+            info: 'Information and help',
             languages: {
                 es: 'Spanish',
                 en: 'English',
@@ -55,6 +72,21 @@ const translations = {
                 pt: 'Portuguese',
                 it: 'Italian'
             }
+        },
+        info: {
+            title: 'How to play',
+            objective: '🎯 Objective',
+            objectiveText: 'Complete today\'s board by covering all cells except those that form today\'s date.',
+            howToPlay: '🎮 How to play',
+            step1: 'Click on a piece to rotate it',
+            step2: 'Drag pieces from the bottom tray to the board',
+            step3: 'Click on a placed piece to remove it from the board',
+            step4: 'Cover all dates except today (marked in red)',
+            controls: '⚙️ Controls',
+            controlLang: 'Change language',
+            controlSound: 'Toggle sound',
+            controlTheme: 'Toggle light/dark mode',
+            author: 'Developed by <strong>Carlos Nieto Sanchez</strong>'
         },
         victory: {
             title: 'Congratulations! 🎉',
@@ -72,6 +104,7 @@ const translations = {
             language: 'Changer de langue',
             sound: 'Activer/Désactiver le son',
             theme: 'Changer le mode clair/sombre',
+            info: 'Information et aide',
             languages: {
                 es: 'Espagnol',
                 en: 'Anglais',
@@ -80,6 +113,21 @@ const translations = {
                 pt: 'Portugais',
                 it: 'Italien'
             }
+        },
+        info: {
+            title: 'Comment jouer',
+            objective: '🎯 Objectif',
+            objectiveText: 'Complétez le tableau d\'aujourd\'hui en couvrant toutes les cases sauf celles qui forment la date actuelle.',
+            howToPlay: '🎮 Comment jouer',
+            step1: 'Cliquez sur une pièce pour la faire pivoter',
+            step2: 'Faites glisser les pièces du plateau inférieur vers le tableau',
+            step3: 'Cliquez sur une pièce placée pour la retirer du plateau',
+            step4: 'Couvrez toutes les dates sauf aujourd\'hui (marquée en rouge)',
+            controls: '⚙️ Contrôles',
+            controlLang: 'Changer de langue',
+            controlSound: 'Activer/Désactiver le son',
+            controlTheme: 'Changer le mode clair/sombre',
+            author: 'Développé par <strong>Carlos Nieto Sanchez</strong>'
         },
         victory: {
             title: 'Félicitations! 🎉',
@@ -97,6 +145,7 @@ const translations = {
             language: 'Sprache ändern',
             sound: 'Ton ein/aus',
             theme: 'Hell/Dunkel-Modus wechseln',
+            info: 'Information und Hilfe',
             languages: {
                 es: 'Spanisch',
                 en: 'Englisch',
@@ -105,6 +154,21 @@ const translations = {
                 pt: 'Portugiesisch',
                 it: 'Italienisch'
             }
+        },
+        info: {
+            title: 'Wie man spielt',
+            objective: '🎯 Ziel',
+            objectiveText: 'Vervollständigen Sie das heutige Brett, indem Sie alle Felder abdecken, außer denen, die das heutige Datum bilden.',
+            howToPlay: '🎮 Wie man spielt',
+            step1: 'Klicken Sie auf ein Teil, um es zu drehen',
+            step2: 'Ziehen Sie Teile vom unteren Tablett zum Brett',
+            step3: 'Klicken Sie auf ein platziertes Teil, um es vom Brett zu entfernen',
+            step4: 'Decken Sie alle Daten außer heute ab (rot markiert)',
+            controls: '⚙️ Steuerung',
+            controlLang: 'Sprache ändern',
+            controlSound: 'Ton ein/aus',
+            controlTheme: 'Hell/Dunkel-Modus wechseln',
+            author: 'Entwickelt von <strong>Carlos Nieto Sanchez</strong>'
         },
         victory: {
             title: 'Glückwunsch! 🎉',
@@ -122,6 +186,7 @@ const translations = {
             language: 'Mudar idioma',
             sound: 'Ativar/Desativar som',
             theme: 'Alternar modo claro/escuro',
+            info: 'Informação e ajuda',
             languages: {
                 es: 'Espanhol',
                 en: 'Inglês',
@@ -130,6 +195,21 @@ const translations = {
                 pt: 'Português',
                 it: 'Italiano'
             }
+        },
+        info: {
+            title: 'Como jogar',
+            objective: '🎯 Objetivo',
+            objectiveText: 'Complete o tabuleiro de hoje cobrindo todas as casas, exceto aquelas que formam a data de hoje.',
+            howToPlay: '🎮 Como jogar',
+            step1: 'Clique em uma peça para girá-la',
+            step2: 'Arraste as peças da bandeja inferior para o tabuleiro',
+            step3: 'Clique em uma peça colocada para removê-la do tabuleiro',
+            step4: 'Cubra todas as datas, exceto hoje (marcada em vermelho)',
+            controls: '⚙️ Controles',
+            controlLang: 'Mudar idioma',
+            controlSound: 'Ativar/Desativar som',
+            controlTheme: 'Alternar modo claro/escuro',
+            author: 'Desenvolvido por <strong>Carlos Nieto Sanchez</strong>'
         },
         victory: {
             title: 'Parabéns! 🎉',
@@ -147,6 +227,7 @@ const translations = {
             language: 'Cambia lingua',
             sound: 'Attiva/Disattiva suono',
             theme: 'Cambia modalità chiara/scura',
+            info: 'Informazioni e aiuto',
             languages: {
                 es: 'Spagnolo',
                 en: 'Inglese',
@@ -155,6 +236,21 @@ const translations = {
                 pt: 'Portoghese',
                 it: 'Italiano'
             }
+        },
+        info: {
+            title: 'Come giocare',
+            objective: '🎯 Obiettivo',
+            objectiveText: 'Completa la tavola di oggi coprendo tutte le caselle tranne quelle che formano la data odierna.',
+            howToPlay: '🎮 Come giocare',
+            step1: 'Fai clic su un pezzo per ruotarlo',
+            step2: 'Trascina i pezzi dal vassoio inferiore alla tavola',
+            step3: 'Fai clic su un pezzo posizionato per rimuoverlo dalla tavola',
+            step4: 'Copri tutte le date tranne oggi (contrassegnata in rosso)',
+            controls: '⚙️ Controlli',
+            controlLang: 'Cambia lingua',
+            controlSound: 'Attiva/Disattiva suono',
+            controlTheme: 'Cambia modalità chiara/scura',
+            author: 'Sviluppato da <strong>Carlos Nieto Sanchez</strong>'
         },
         victory: {
             title: 'Congratulazioni! 🎉',
@@ -223,16 +319,40 @@ function updateTooltips() {
     const btnLanguage = document.getElementById('btn-language');
     const btnSound = document.getElementById('btn-sound');
     const btnTheme = document.getElementById('btn-theme');
+    const btnInfo = document.getElementById('btn-info');
     
     if (btnLanguage) btnLanguage.title = lang.tooltips.language;
     if (btnSound) btnSound.title = lang.tooltips.sound;
     if (btnTheme) btnTheme.title = lang.tooltips.theme;
+    if (btnInfo) btnInfo.title = lang.tooltips.info;
     
     // Update language options tooltips
     const langOptions = document.querySelectorAll('.lang-option');
     langOptions.forEach(option => {
         const langCode = option.dataset.lang;
         option.title = lang.tooltips.languages[langCode];
+    });
+    
+    // Update info modal translations
+    updateInfoModalTranslations();
+}
+
+function updateInfoModalTranslations() {
+    const lang = translations[currentLanguage];
+    const elements = document.querySelectorAll('[data-i18n]');
+    
+    elements.forEach(el => {
+        const key = el.dataset.i18n;
+        const keys = key.split('.');
+        let value = lang;
+        
+        for (const k of keys) {
+            value = value[k];
+        }
+        
+        if (value) {
+            el.innerHTML = value;
+        }
     });
 }
 
@@ -827,6 +947,143 @@ function setupDragAndDrop() {
         clearPreview();
     };
     document.addEventListener('mouseup', documentMouseUpHandler);
+    
+    // Touch support for mobile devices
+    const trayTouchStartHandler = (e) => {
+        if (e.target.closest('.rotate-btn')) return;
+        
+        const container = e.target.closest('.piece-container');
+        if (!container) return;
+        
+        const index = parseInt(container.dataset.index);
+        if (usedPieces.has(index)) return;
+        
+        const touch = e.touches[0];
+        const rect = container.getBoundingClientRect();
+        const trayRect = trayElement.getBoundingClientRect();
+        
+        const gridX = Math.floor((touch.clientX - trayRect.left) / (CELL_SIZE + GAP));
+        const gridY = Math.floor((touch.clientY - trayRect.top) / (CELL_SIZE + GAP));
+        
+        const clickOffset = findCellAtPixel(pieces[index], gridX, gridY);
+        if (!clickOffset) return;
+        
+        const clickPixelOffset = {
+            x: touch.clientX - rect.left,
+            y: touch.clientY - rect.top
+        };
+        
+        draggedPiece = { 
+            index, 
+            piece: pieces[index], 
+            clickOffset,
+            clickPixelOffset,
+            isDragging: false
+        };
+        
+        e.preventDefault();
+    };
+    trayElement.addEventListener('touchstart', trayTouchStartHandler, { passive: false });
+    
+    const documentTouchMoveHandler = (e) => {
+        if (!draggedPiece) return;
+        
+        const touch = e.touches[0];
+        
+        if (!draggedPiece.isDragging) {
+            draggedPiece.isDragging = true;
+            const container = document.querySelector(`[data-index="${draggedPiece.index}"]`);
+            if (container) container.classList.add('dragging');
+            document.body.classList.add('is-dragging');
+            createFloatingPiece(draggedPiece.piece, draggedPiece.clickPixelOffset);
+        }
+        
+        if (floatingPieceEl) {
+            floatingPieceEl.style.left = (touch.clientX - draggedPiece.clickPixelOffset.x) + 'px';
+            floatingPieceEl.style.top = (touch.clientY - draggedPiece.clickPixelOffset.y) + 'px';
+        }
+        
+        const element = document.elementFromPoint(touch.clientX, touch.clientY);
+        const cell = element?.closest('.grid-cell');
+        
+        if (cell) {
+            const row = parseInt(cell.dataset.row);
+            const col = parseInt(cell.dataset.col);
+            const adjustedRow = row - draggedPiece.clickOffset.row;
+            const adjustedCol = col - draggedPiece.clickOffset.col;
+            showPreview(draggedPiece.piece, adjustedRow, adjustedCol);
+        } else {
+            clearPreview();
+        }
+        
+        e.preventDefault();
+    };
+    document.addEventListener('touchmove', documentTouchMoveHandler, { passive: false });
+    
+    const documentTouchEndHandler = (e) => {
+        if (!draggedPiece || !draggedPiece.isDragging) {
+            draggedPiece = null;
+            return;
+        }
+        
+        const container = document.querySelector(`[data-index="${draggedPiece.index}"]`);
+        if (container) container.classList.remove('dragging');
+        
+        document.body.classList.remove('is-dragging');
+        
+        const touch = e.changedTouches[0];
+        const element = document.elementFromPoint(touch.clientX, touch.clientY);
+        const cell = element?.closest('.grid-cell');
+        
+        if (cell) {
+            const row = parseInt(cell.dataset.row);
+            const col = parseInt(cell.dataset.col);
+            const adjustedRow = row - draggedPiece.clickOffset.row;
+            const adjustedCol = col - draggedPiece.clickOffset.col;
+            
+            if (canPlacePiece(draggedPiece.piece, adjustedRow, adjustedCol)) {
+                const pieceCells = placePiece(draggedPiece.piece, adjustedRow, adjustedCol);
+                
+                placedPieces.push({
+                    pieceIndex: draggedPiece.index,
+                    cells: pieceCells
+                });
+                
+                updateGridDisplay();
+                
+                pieceCells.forEach((cellInfo, i) => {
+                    const gridCell = document.querySelector(`[data-row="${cellInfo.row}"][data-col="${cellInfo.col}"]`);
+                    if (gridCell) {
+                        gridCell.classList.add('placing');
+                        setTimeout(() => {
+                            gridCell.classList.remove('placing');
+                        }, 50 + i * 30);
+                    }
+                });
+                
+                playSound('place');
+                
+                usedPieces.add(draggedPiece.index);
+                const pieceContainer = document.querySelector(`[data-index="${draggedPiece.index}"]`);
+                if (pieceContainer) {
+                    pieceContainer.classList.add('used');
+                }
+                
+                setTimeout(() => checkWinCondition(), 400);
+            } else {
+                playSound('invalid');
+            }
+        } else {
+            playSound('invalid');
+        }
+        
+        draggedPiece = null;
+        removeFloatingPiece();
+        clearPreview();
+        
+        e.preventDefault();
+    };
+    document.addEventListener('touchend', documentTouchEndHandler, { passive: false });
 }
 
 // Create floating piece that follows cursor
@@ -1088,6 +1345,31 @@ function setupControls() {
             const isLight = document.body.classList.contains('light-mode');
             btnTheme.querySelector('.icon').textContent = isLight ? '☀️' : '🌙';
             playSound('rotate');
+        });
+    }
+    
+    // Info modal
+    const btnInfo = document.getElementById('btn-info');
+    const infoModal = document.getElementById('info-modal');
+    const infoClose = document.getElementById('info-close');
+    
+    if (btnInfo && infoModal && infoClose) {
+        btnInfo.addEventListener('click', () => {
+            infoModal.classList.add('show');
+            playSound('rotate');
+        });
+        
+        infoClose.addEventListener('click', () => {
+            infoModal.classList.remove('show');
+            playSound('rotate');
+        });
+        
+        // Close modal when clicking outside
+        infoModal.addEventListener('click', (e) => {
+            if (e.target === infoModal) {
+                infoModal.classList.remove('show');
+                playSound('rotate');
+            }
         });
     }
 }

@@ -588,6 +588,194 @@ body.is-dragging * {
   }
 }
 
+/* INFO MODAL */
+.info-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.info-modal.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.info-content {
+  background: var(--panel);
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+  position: relative;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-modal.show .info-content {
+  transform: scale(1);
+}
+
+body.light-mode .info-content {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.info-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: var(--accent);
+  font-size: 24px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.info-close:hover {
+  background: var(--accent);
+  color: white;
+  transform: scale(1.1);
+}
+
+body.light-mode .info-close {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.info-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0 0 30px 0;
+  text-align: center;
+}
+
+body.light-mode .info-title {
+  color: var(--accent);
+}
+
+.info-instructions {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.info-section h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--accent-2);
+  margin: 0 0 10px 0;
+}
+
+body.light-mode .info-section h3 {
+  color: var(--accent);
+}
+
+.info-section p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+body.light-mode .info-section p {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.info-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.info-section li {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  padding-left: 20px;
+  position: relative;
+}
+
+.info-section li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+body.light-mode .info-section li {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.info-section li strong {
+  font-size: 18px;
+  margin-right: 5px;
+}
+
+.info-footer {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+body.light-mode .info-footer {
+  border-top-color: rgba(0, 0, 0, 0.1);
+}
+
+.info-footer p {
+  margin: 8px 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+body.light-mode .info-footer p {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.info-footer strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.info-version {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: monospace;
+}
+
+body.light-mode .info-version {
+  color: rgba(0, 0, 0, 0.4);
+}
+
 /* CONFETTI */
 .confetti {
   position: fixed;
@@ -615,13 +803,14 @@ body.is-dragging * {
     grid-template-columns: repeat(3, 1fr);
     padding: 20px;
     gap: 12px;
+    min-height: auto;
   }
   
   .piece-container {
-    min-height: 180px;
-    min-width: 180px;
-    max-height: 180px;
-    max-width: 180px;
+    min-height: 160px;
+    min-width: 160px;
+    max-height: 160px;
+    max-width: 160px;
   }
   
   .date-header {
@@ -641,22 +830,22 @@ body.is-dragging * {
   }
   
   .game-container {
-    gap: 24px;
+    gap: 20px;
   }
   
   .piece-tray {
     grid-template-columns: repeat(3, 1fr);
-    padding: 16px;
-    gap: 10px;
+    padding: 12px;
+    gap: 8px;
     min-height: auto;
   }
   
   .piece-container {
-    min-height: 150px;
-    min-width: 150px;
-    max-height: 150px;
-    max-width: 150px;
-    padding: 10px;
+    min-height: 130px;
+    min-width: 130px;
+    max-height: 130px;
+    max-width: 130px;
+    padding: 8px;
   }
   
   .date-header {
@@ -708,6 +897,31 @@ body.is-dragging * {
   .victory-emoji {
     font-size: 48px;
   }
+  
+  .info-content {
+    padding: 30px 20px;
+    max-height: 85vh;
+  }
+  
+  .info-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  .info-section h3 {
+    font-size: 18px;
+  }
+  
+  .info-section p,
+  .info-section li {
+    font-size: 14px;
+  }
+  
+  .info-close {
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -721,7 +935,7 @@ body.is-dragging * {
   }
   
   .game-container {
-    gap: 16px;
+    gap: 12px;
   }
   
   .grid {
@@ -734,16 +948,17 @@ body.is-dragging * {
   
   .piece-tray {
     grid-template-columns: repeat(2, 1fr);
-    padding: 12px;
-    gap: 8px;
+    padding: 10px;
+    gap: 6px;
+    min-height: auto;
   }
   
   .piece-container {
-    min-height: 140px;
-    min-width: 140px;
-    max-height: 140px;
-    max-width: 140px;
-    padding: 8px;
+    min-height: 110px;
+    min-width: 110px;
+    max-height: 110px;
+    max-width: 110px;
+    padding: 6px;
   }
   
   .date-header {
@@ -798,6 +1013,33 @@ body.is-dragging * {
     top: 10px;
     right: 10px;
   }
+  
+  .info-content {
+    padding: 25px 15px;
+    max-height: 90vh;
+  }
+  
+  .info-title {
+    font-size: 24px;
+    margin-bottom: 18px;
+  }
+  
+  .info-section h3 {
+    font-size: 16px;
+  }
+  
+  .info-section p,
+  .info-section li {
+    font-size: 13px;
+  }
+  
+  .info-footer p {
+    font-size: 12px;
+  }
+  
+  .info-version {
+    font-size: 11px;
+  }
 }
 
 @media (max-width: 380px) {
@@ -809,11 +1051,17 @@ body.is-dragging * {
     font-size: 11px;
   }
   
+  .piece-tray {
+    padding: 8px;
+    gap: 6px;
+  }
+  
   .piece-container {
-    min-height: 120px;
-    min-width: 120px;
-    max-height: 120px;
-    max-width: 120px;
+    min-height: 95px;
+    min-width: 95px;
+    max-height: 95px;
+    max-width: 95px;
+    padding: 5px;
   }
   
   .date-header {
