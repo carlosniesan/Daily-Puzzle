@@ -546,7 +546,7 @@ const pieces = [
     // G5: Cuadrado 2x2 con una casilla extra
     { name: 'G5', cells: [[0,0],[0,1],[1,0],[1,1],[2,0]], color: '#ffee58' },
     // E5: E de 5 casillas (3 verticales + 2 horizontales)
-    { name: 'E5', cells: [[0,0],[1,0],[2,0],[2,1],[2,2]], color: '#66bb6a' },
+    { name: 'E5', cells: [[0,0],[1,0],[2,0],[2,1],[2,2]], color: '#2e7d32' },
     // S4: S de 4 casillas
     { name: 'S4', cells: [[0,0],[1,0],[1,1],[2,1]], color: '#a1887f' },
     // C5: C de 5 casillas
@@ -973,25 +973,12 @@ function setupDragAndDrop() {
             y: touch.clientY - rect.top
         };
         
-        // Set a timer for long press (300ms)
-        touchTimer = setTimeout(() => {
-            // Long press - start dragging
-            if (!touchMoved) {
-                draggedPiece = { 
-                    index, 
-                    piece: pieces[index], 
-                    clickOffset,
-                    clickPixelOffset,
-                    isDragging: false
-                };
-            }
-        }, 300);
-        
-        // Store temp data in case we need it
+        // Store temp data for both tap and drag
         container._tempTouchData = {
             index,
             clickOffset,
-            clickPixelOffset
+            clickPixelOffset,
+            piece: pieces[index]
         };
         
         e.preventDefault();
@@ -999,7 +986,25 @@ function setupDragAndDrop() {
     trayElement.addEventListener('touchstart', trayTouchStartHandler, { passive: false });
     
     const documentTouchMoveHandler = (e) => {
-        touchMoved = true;
+        // Detectar si hay movimiento significativo
+        if (!touchMoved) {
+            touchMoved = true;
+            // Iniciar drag desde el contenedor si hay datos temporales
+            const containers = document.querySelectorAll('.piece-container');
+            for (const container of containers) {
+                if (container._tempTouchData) {
+                    const data = container._tempTouchData;
+                    draggedPiece = {
+                        index: data.index,
+                        piece: data.piece,
+                        clickOffset: data.clickOffset,
+                        clickPixelOffset: data.clickPixelOffset,
+                        isDragging: false
+                    };
+                    break;
+                }
+            }
+        }
         
         if (!draggedPiece) return;
         
@@ -1036,17 +1041,12 @@ function setupDragAndDrop() {
     document.addEventListener('touchmove', documentTouchMoveHandler, { passive: false });
     
     const documentTouchEndHandler = (e) => {
-        // Clear the long press timer
-        if (touchTimer) {
-            clearTimeout(touchTimer);
-            touchTimer = null;
-        }
+        // Limpiar datos temporales
+        const containers = document.querySelectorAll('.piece-container');
+        containers.forEach(c => delete c._tempTouchData);
         
-        // Check if this was a quick tap (< 300ms and no movement)
-        const touchDuration = Date.now() - touchStartTime;
-        
-        if (!draggedPiece && touchDuration < 300 && !touchMoved) {
-            // This was a tap - rotate the piece
+        // Si no hubo movimiento, es un tap para rotar
+        if (!touchMoved && !draggedPiece) {
             const container = e.target.closest('.piece-container');
             if (container) {
                 const index = parseInt(container.dataset.index);

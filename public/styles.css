@@ -72,7 +72,8 @@ body.light-mode .control-btn:hover {
 .language-panel {
   position: absolute;
   top: 100%;
-  right: 0;
+  left: 50%;
+  transform: translateX(-50%);
   margin-top: 8px;
   display: flex;
   flex-direction: column;
@@ -89,7 +90,7 @@ body.light-mode .control-btn:hover {
 .language-panel.hidden {
   opacity: 0;
   pointer-events: none;
-  transform: translateY(-10px);
+  transform: translateX(-50%) translateY(-10px);
 }
 
 .lang-option {
@@ -353,7 +354,8 @@ body.light-mode .grid-cell.filled .cell-label {
   min-height: 240px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
+  gap: 20px;
+  row-gap: 30px;
   padding: 30px;
   background: var(--panel);
   border-radius: 12px;
@@ -825,9 +827,10 @@ body.light-mode .info-version {
   }
   
   .piece-tray {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     padding: 20px;
     gap: 12px;
+    row-gap: 20px;
     min-height: auto;
   }
   
@@ -882,6 +885,7 @@ body.light-mode .info-version {
     grid-template-columns: repeat(3, 1fr);
     padding: 6px;
     gap: 4px;
+    row-gap: 6px;
     min-height: auto;
     flex-shrink: 0;
   }
@@ -1001,6 +1005,7 @@ body.light-mode .info-version {
     grid-template-columns: repeat(3, 1fr);
     padding: 5px;
     gap: 3px;
+    row-gap: 5px;
     min-height: auto;
   }
   
@@ -1121,6 +1126,8 @@ body.light-mode .info-version {
   .piece-tray {
     padding: 4px;
     gap: 2px;
+    row-gap: 4px;
+    grid-template-columns: repeat(2, 1fr);
   }
   
   .piece-container {
