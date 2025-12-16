@@ -646,30 +646,6 @@ function createPieceTray() {
         const pieceGrid = createPiecePreview(piece);
         pieceContainer.appendChild(pieceGrid);
         
-        // Add rotation buttons
-        const buttonsDiv = document.createElement('div');
-        buttonsDiv.className = 'piece-buttons';
-        
-        const rotateLeftBtn = document.createElement('button');
-        rotateLeftBtn.className = 'rotate-btn';
-        rotateLeftBtn.textContent = '↺';
-        rotateLeftBtn.onclick = (e) => {
-            e.stopPropagation();
-            rotatePiece(i);
-        };
-        
-        const rotateRightBtn = document.createElement('button');
-        rotateRightBtn.className = 'rotate-btn';
-        rotateRightBtn.textContent = '↻';
-        rotateRightBtn.onclick = (e) => {
-            e.stopPropagation();
-            rotatePiece(i);
-        };
-        
-        buttonsDiv.appendChild(rotateLeftBtn);
-        buttonsDiv.appendChild(rotateRightBtn);
-        pieceContainer.appendChild(buttonsDiv);
-        
         trayElement.appendChild(pieceContainer);
     }
 }
@@ -973,9 +949,11 @@ function setupDragAndDrop() {
     document.addEventListener('mouseup', documentMouseUpHandler);
     
     // Touch support for mobile devices
+    let touchStartTime = 0;
+    let touchTimer = null;
+    let touchMoved = false;
+    
     const trayTouchStartHandler = (e) => {
-        if (e.target.closest('.rotate-btn')) return;
-        
         const container = e.target.closest('.piece-container');
         if (!container) return;
         
@@ -985,20 +963,35 @@ function setupDragAndDrop() {
         const touch = e.touches[0];
         const rect = container.getBoundingClientRect();
         
-        // Simple approach: use the first cell of the piece as offset
-        const clickOffset = { row: 0, col: 0 };
+        touchStartTime = Date.now();
+        touchMoved = false;
         
+        // Setup for potential drag
+        const clickOffset = { row: 0, col: 0 };
         const clickPixelOffset = {
             x: touch.clientX - rect.left,
             y: touch.clientY - rect.top
         };
         
-        draggedPiece = { 
-            index, 
-            piece: pieces[index], 
+        // Set a timer for long press (300ms)
+        touchTimer = setTimeout(() => {
+            // Long press - start dragging
+            if (!touchMoved) {
+                draggedPiece = { 
+                    index, 
+                    piece: pieces[index], 
+                    clickOffset,
+                    clickPixelOffset,
+                    isDragging: false
+                };
+            }
+        }, 300);
+        
+        // Store temp data in case we need it
+        container._tempTouchData = {
+            index,
             clickOffset,
-            clickPixelOffset,
-            isDragging: false
+            clickPixelOffset
         };
         
         e.preventDefault();
@@ -1006,6 +999,8 @@ function setupDragAndDrop() {
     trayElement.addEventListener('touchstart', trayTouchStartHandler, { passive: false });
     
     const documentTouchMoveHandler = (e) => {
+        touchMoved = true;
+        
         if (!draggedPiece) return;
         
         const touch = e.touches[0];
@@ -1041,6 +1036,28 @@ function setupDragAndDrop() {
     document.addEventListener('touchmove', documentTouchMoveHandler, { passive: false });
     
     const documentTouchEndHandler = (e) => {
+        // Clear the long press timer
+        if (touchTimer) {
+            clearTimeout(touchTimer);
+            touchTimer = null;
+        }
+        
+        // Check if this was a quick tap (< 300ms and no movement)
+        const touchDuration = Date.now() - touchStartTime;
+        
+        if (!draggedPiece && touchDuration < 300 && !touchMoved) {
+            // This was a tap - rotate the piece
+            const container = e.target.closest('.piece-container');
+            if (container) {
+                const index = parseInt(container.dataset.index);
+                if (!usedPieces.has(index)) {
+                    rotatePiece(index);
+                }
+            }
+            return;
+        }
+        
+        // Handle drag and drop
         if (!draggedPiece || !draggedPiece.isDragging) {
             draggedPiece = null;
             return;
