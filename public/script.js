@@ -542,10 +542,10 @@ const pieces = [
     { name: 'I4', cells: [[0,0],[1,0],[2,0],[3,0]], color: '#42a5f5' },
     // N5: Z de tetris con casilla extra en el medio
     { name: 'N5', cells: [[0,0],[0,1],[1,1],[2,1],[2,2]], color: '#ba68c8' },
-    // L4: L de 4 casillas (vertical con casilla a la derecha)
-    { name: 'L4', cells: [[0,0],[1,0],[2,0],[2,1]], color: '#7e57c2' },
     // L5: L de 5 casillas (vertical con casilla a la derecha)
     { name: 'L5', cells: [[0,0],[1,0],[2,0],[3,0],[3,1]], color: '#26c6da' },
+    // L4: L de 4 casillas (vertical con casilla a la derecha)
+    { name: 'L4', cells: [[0,0],[1,0],[2,0],[2,1]], color: '#7e57c2' },
     // G5: Cuadrado 2x2 con una casilla extra
     { name: 'G5', cells: [[0,0],[0,1],[1,0],[1,1],[2,0]], color: '#ffee58' },
     // E5: E de 5 casillas (3 verticales + 2 horizontales)
@@ -554,10 +554,10 @@ const pieces = [
     { name: 'S4', cells: [[0,0],[1,0],[1,1],[2,1]], color: '#a1887f' },
     // C5: C de 5 casillas
     { name: 'C5', cells: [[0,0],[1,0],[2,0],[0,1],[2,1]], color: '#81c784' },
-    // T5: T de 5 casillas
-    { name: 'T5', cells: [[0,0],[0,1],[0,2],[1,1],[2,1]], color: '#ff7043' },
     // Z5: Primera Z de 5 casillas
-    { name: 'Z5', cells: [[0,0],[0,1],[0,2],[1,2],[1,3]], color: '#ef5350' }
+    { name: 'Z5', cells: [[0,0],[0,1],[0,2],[1,2],[1,3]], color: '#ef5350' },
+    // T5: T de 5 casillas
+    { name: 'T5', cells: [[0,0],[0,1],[0,2],[1,1],[2,1]], color: '#ff7043' }
 ];
 
 // Reset the game to initial state
