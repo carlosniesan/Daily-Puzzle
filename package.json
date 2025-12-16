@@ -1,0 +1,15 @@
+{
+  "name": "daily-puzzle",
+  "version": "1.0.0",
+  "description": "A daily calendar puzzle game.",
+  "main": "public/script.js",
+  "scripts": {
+    "start": "live-server public"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  },
+  "author": "",
+  "license": "ISC"
+}
