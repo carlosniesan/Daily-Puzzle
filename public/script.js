@@ -966,19 +966,38 @@ function setupDragAndDrop() {
         touchStartTime = Date.now();
         touchMoved = false;
         
-        // Setup for potential drag
-        const clickOffset = { row: 0, col: 0 };
-        const clickPixelOffset = {
+        // Detectar en qué celda se hizo click
+        const clickedCell = document.elementFromPoint(touch.clientX, touch.clientY);
+        const piece = pieces[index];
+        
+        let clickOffset = { row: 0, col: 0 };
+        let clickPixelOffset = {
             x: touch.clientX - rect.left,
             y: touch.clientY - rect.top
         };
+        
+        if (clickedCell && clickedCell.classList.contains('piece-cell')) {
+            const row = parseInt(clickedCell.dataset.pieceRow) || 0;
+            const col = parseInt(clickedCell.dataset.pieceCol) || 0;
+            const isFilled = piece.cells.some(([r, c]) => r === row && c === col);
+            
+            if (isFilled) {
+                clickOffset.row = row;
+                clickOffset.col = col;
+                
+                const cellRect = clickedCell.getBoundingClientRect();
+                const cellSize = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--cell'));
+                clickPixelOffset.x = col * cellSize + (touch.clientX - cellRect.left);
+                clickPixelOffset.y = row * cellSize + (touch.clientY - cellRect.top);
+            }
+        }
         
         // Store temp data for both tap and drag
         container._tempTouchData = {
             index,
             clickOffset,
             clickPixelOffset,
-            piece: pieces[index]
+            piece: piece
         };
         
         e.preventDefault();
@@ -1047,7 +1066,9 @@ function setupDragAndDrop() {
         
         // Si no hubo movimiento, es un tap para rotar
         if (!touchMoved && !draggedPiece) {
-            const container = e.target.closest('.piece-container');
+            const touch = e.changedTouches[0];
+            const element = document.elementFromPoint(touch.clientX, touch.clientY);
+            const container = element?.closest('.piece-container');
             if (container) {
                 const index = parseInt(container.dataset.index);
                 if (!usedPieces.has(index)) {

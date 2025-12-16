@@ -883,18 +883,20 @@ body.light-mode .info-version {
   
   .piece-tray {
     grid-template-columns: repeat(3, 1fr);
-    padding: 6px;
-    gap: 4px;
-    row-gap: 6px;
+    padding: 8px;
+    gap: 6px;
+    row-gap: 8px;
     min-height: auto;
     flex-shrink: 0;
+    flex-grow: 1;
+    max-height: calc(100vh - 320px);
   }
   
   .piece-container {
-    min-height: 75px;
-    min-width: 75px;
-    max-height: 75px;
-    max-width: 75px;
+    min-height: 85px;
+    min-width: 85px;
+    max-height: 85px;
+    max-width: 85px;
     padding: 4px;
   }
   
@@ -1003,17 +1005,19 @@ body.light-mode .info-version {
   
   .piece-tray {
     grid-template-columns: repeat(3, 1fr);
-    padding: 5px;
-    gap: 3px;
-    row-gap: 5px;
+    padding: 6px;
+    gap: 5px;
+    row-gap: 7px;
     min-height: auto;
+    flex-grow: 1;
+    max-height: calc(100vh - 280px);
   }
   
   .piece-container {
-    min-height: 65px;
-    min-width: 65px;
-    max-height: 65px;
-    max-width: 65px;
+    min-height: 75px;
+    min-width: 75px;
+    max-height: 75px;
+    max-width: 75px;
     padding: 3px;
   }
   
@@ -1124,17 +1128,19 @@ body.light-mode .info-version {
   }
   
   .piece-tray {
-    padding: 4px;
-    gap: 2px;
-    row-gap: 4px;
+    padding: 5px;
+    gap: 4px;
+    row-gap: 6px;
     grid-template-columns: repeat(2, 1fr);
+    flex-grow: 1;
+    max-height: calc(100vh - 250px);
   }
   
   .piece-container {
-    min-height: 58px;
-    min-width: 58px;
-    max-height: 58px;
-    max-width: 58px;
+    min-height: 70px;
+    min-width: 70px;
+    max-height: 70px;
+    max-width: 70px;
     padding: 3px;
   }
   
