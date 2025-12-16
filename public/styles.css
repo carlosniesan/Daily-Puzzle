@@ -606,27 +606,217 @@ body.is-dragging * {
 }
 
 /* RESPONSIVE */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   :root {
-    --cell: 36px;
+    --cell: 42px;
   }
   
   .piece-tray {
     grid-template-columns: repeat(3, 1fr);
+    padding: 20px;
+    gap: 12px;
   }
   
-  .piece-cell {
-    width: 18px;
-    height: 18px;
+  .piece-container {
+    min-height: 180px;
+    min-width: 180px;
+    max-height: 180px;
+    max-width: 180px;
+  }
+  
+  .date-header {
+    font-size: 20px;
+    padding: 12px 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+  
+  :root {
+    --cell: 38px;
+    --gap: 3px;
+  }
+  
+  .game-container {
+    gap: 24px;
+  }
+  
+  .piece-tray {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 16px;
+    gap: 10px;
+    min-height: auto;
+  }
+  
+  .piece-container {
+    min-height: 150px;
+    min-width: 150px;
+    max-height: 150px;
+    max-width: 150px;
+    padding: 10px;
+  }
+  
+  .date-header {
+    font-size: 18px;
+    padding: 10px 20px;
+    margin-bottom: -12px;
+  }
+  
+  .controls-panel {
+    top: 10px;
+    right: 10px;
+    gap: 8px;
+  }
+  
+  .control-btn {
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+  }
+  
+  .language-panel {
+    right: 52px;
+  }
+  
+  .lang-option {
+    width: 36px;
+    height: 36px;
+    font-size: 12px;
+  }
+  
+  .rotate-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+  
+  .victory-content {
+    padding: 40px 30px;
+  }
+  
+  .victory-title {
+    font-size: 42px;
+  }
+  
+  .victory-message {
+    font-size: 18px;
+  }
+  
+  .victory-emoji {
+    font-size: 48px;
   }
 }
 
 @media (max-width: 480px) {
   :root {
-    --cell: 28px;
+    --cell: 34px;
+    --gap: 2px;
+  }
+  
+  body {
+    padding: 8px;
+  }
+  
+  .game-container {
+    gap: 16px;
+  }
+  
+  .grid {
+    padding: 4px;
+  }
+  
+  .cell-label {
+    font-size: 12px;
   }
   
   .piece-tray {
     grid-template-columns: repeat(2, 1fr);
+    padding: 12px;
+    gap: 8px;
+  }
+  
+  .piece-container {
+    min-height: 140px;
+    min-width: 140px;
+    max-height: 140px;
+    max-width: 140px;
+    padding: 8px;
+  }
+  
+  .date-header {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+  
+  .controls-panel {
+    gap: 6px;
+  }
+  
+  .control-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+  }
+  
+  .language-panel {
+    flex-wrap: wrap;
+    max-width: 200px;
+  }
+  
+  .lang-option {
+    width: 32px;
+    height: 32px;
+    font-size: 11px;
+  }
+  
+  .victory-content {
+    padding: 30px 20px;
+    border-radius: 16px;
+  }
+  
+  .victory-title {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+  
+  .victory-message {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .victory-emoji {
+    font-size: 40px;
+  }
+  
+  .victory-close {
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+    top: 10px;
+    right: 10px;
+  }
+}
+
+@media (max-width: 380px) {
+  :root {
+    --cell: 30px;
+  }
+  
+  .cell-label {
+    font-size: 11px;
+  }
+  
+  .piece-container {
+    min-height: 120px;
+    min-width: 120px;
+    max-height: 120px;
+    max-width: 120px;
+  }
+  
+  .date-header {
+    font-size: 14px;
   }
 }
