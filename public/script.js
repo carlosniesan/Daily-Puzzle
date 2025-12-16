@@ -546,8 +546,8 @@ const pieces = [
     { name: 'L5', cells: [[0,0],[1,0],[2,0],[3,0],[3,1]], color: '#26c6da' },
     // L4: L de 4 casillas (vertical con casilla a la derecha)
     { name: 'L4', cells: [[0,0],[1,0],[2,0],[2,1]], color: '#7e57c2' },
-    // G5: Cuadrado 2x2 con una casilla extra
-    { name: 'G5', cells: [[0,0],[0,1],[1,0],[1,1],[2,0]], color: '#ffee58' },
+    // T5: T de 5 casillas
+    { name: 'T5', cells: [[0,0],[0,1],[0,2],[1,1],[2,1]], color: '#ff7043' },
     // E5: E de 5 casillas (3 verticales + 2 horizontales)
     { name: 'E5', cells: [[0,0],[1,0],[2,0],[2,1],[2,2]], color: '#2e7d32' },
     // S4: S de 4 casillas
@@ -556,8 +556,8 @@ const pieces = [
     { name: 'C5', cells: [[0,0],[1,0],[2,0],[0,1],[2,1]], color: '#81c784' },
     // Z5: Primera Z de 5 casillas
     { name: 'Z5', cells: [[0,0],[0,1],[0,2],[1,2],[1,3]], color: '#ef5350' },
-    // T5: T de 5 casillas
-    { name: 'T5', cells: [[0,0],[0,1],[0,2],[1,1],[2,1]], color: '#ff7043' }
+    // P5: 3 casillas en fila superior y 2 en fila inferior (con hueco)
+    { name: 'P5', cells: [[0,0],[0,1],[0,2],[1,1],[1,2]], color: '#ffee58' }
 ];
 
 // Reset the game to initial state
